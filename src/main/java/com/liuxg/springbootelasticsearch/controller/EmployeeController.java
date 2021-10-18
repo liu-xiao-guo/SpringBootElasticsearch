@@ -29,9 +29,9 @@ public class EmployeeController {
         return employeeService.getEmployeesByName(name);
     }
 
-    @GetMapping(value ="/allemployees/{name}/{address}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Employee> getUserByNameAndAddress(@PathVariable String name, @PathVariable String address){
-        return employeeService.getEmployeesByNameAndOccupation(name, address);
+    @GetMapping(value ="/allemployees/{name}/{occupation}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getUserByNameAndOccupation(@PathVariable String name, @PathVariable String occupation){
+        return employeeService.getEmployeesByNameAndOccupation(name, occupation);
     }
 
 }
