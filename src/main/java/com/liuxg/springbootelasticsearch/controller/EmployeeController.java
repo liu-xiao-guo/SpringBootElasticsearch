@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,11 +21,17 @@ public class EmployeeController {
 
     @GetMapping(value ="/allemployees", produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Employee> getAllEmployees() {
-//        Employee employee = new Employee("liuxg", "male", "engineer", 10000);
-//        List<Employee> list = new ArrayList<>();
-//        list.add(employee);
-//        return list;
         return employeeService.getAllEmployeeInfo();
+    }
+
+    @GetMapping(value ="/allemployees/{name}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getUserByName(@PathVariable String userName){
+        return employeeService.getEmployeesByName(userName);
+    }
+
+    @GetMapping(value ="/allemployees/{name}/{address}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Employee> getUserByNameAndAddress(@PathVariable String userName, @PathVariable String address){
+        return employeeService.getEmployeesByNameAndOccupation(userName, address);
     }
 
 }
